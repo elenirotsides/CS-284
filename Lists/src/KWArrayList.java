@@ -189,6 +189,39 @@ public class KWArrayList<E>
         }
         return -1;
     }
+    
+    //returns true if the item is in the list, false otherwise
+    public boolean member(E item) {
+    	for(int i = 0; i < size; i++) {
+    		if(theData[i] == item) {
+    			return true;
+    		}
+    	}
+    	
+    	return false;
+    }
+    
+    // Removes all copies of the item from list
+    public void removeAll(E item) {
+    	for(int i = size - 1; i >= 0; i--) {
+    		if(theData[i] == item) {
+    			this.remove(i);
+    		}
+    	}
+    	
+    }
+    
+    // Returns true if an element is repeated, false otherwise
+    public boolean hasRepititions() {
+    	for(int i = 0; i < size - 1; i++) {
+    		for(int j = i + 1; j < size; j++) {
+    			if(theData[i] == theData[j]) {
+    				return true;
+    			}
+    		}
+    	}
+    	return false;
+    }
     /*</exercise>*/
 }
 /*</listing>*/
