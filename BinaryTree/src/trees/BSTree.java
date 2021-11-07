@@ -82,6 +82,38 @@ public class BSTree<Key extends Comparable<Key>, Value> {
 		else return min(x.left);
 	}
 	
+	public Node minIter(Node x) {
+		while (x != null && x.left != null) {
+			x = x.left;
+		}
+		return x;
+	}
+	
+	public Node max(Node x) {
+		if(x.right == null) return x;
+		else return max(x.right);
+	}
+	
+	public Node predecessor(Node root, Key key) {
+		Node x = search(key);
+		if(x.left != null) {
+			return max(x.left);
+		}
+		Node predecessor = null;
+		while(root != null) {
+			int compare = key.compareTo(root.key);
+			if(compare < 0) {
+				root = root.left;
+			} else if(compare > 0) {
+				predecessor = root;
+				root = root.right;
+			} else {
+				break;
+			}
+		}
+		return predecessor;
+	}
+	
 	public Node successor(Node root, Key key) {
 		Node x = search(key);
 		if (x.right != null)
